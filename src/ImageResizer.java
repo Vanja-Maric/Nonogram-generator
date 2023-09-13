@@ -11,9 +11,9 @@ public class ImageResizer {
   private String imagePath;
 
   public ImageResizer(String imagePath, int numberOfColumns, int numberOfRows) {
-    this.numberOfRows = numberOfRows;
-    this.numberOfColumns = numberOfColumns;
-    this.imagePath = imagePath;
+    setImagePath(imagePath);
+    setNumberOfColumns(numberOfColumns);
+    setNumberOfRows(numberOfRows);
   }
 
   public BufferedImage loadImage() {
@@ -36,11 +36,19 @@ public class ImageResizer {
     return resizedImage;
   }
 
-  public void setNumberOfRows(int numberOfRows) {
+  // ADD VALIDATION`????
+  private void setNumberOfRows(int numberOfRows) {
+    // Validera????
     this.numberOfRows = numberOfRows;
   }
 
-  public void setNumberOfColumns(int numberOfColumns) {
+  private void setNumberOfColumns(int numberOfColumns) {
+    // Validera????
     this.numberOfColumns = numberOfColumns;
+  }
+
+  private void setImagePath(String imagePath) {
+    // Validera????
+    this.imagePath = imagePath;
   }
 }
