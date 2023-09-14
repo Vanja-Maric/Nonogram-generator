@@ -5,10 +5,15 @@ class Main {
     System.out.println();
     int[][] RGBgrid = imageLoader.getRedBlueGreenWhiteGrid();
 
-    /*NonogramNumbersGetter nonogramNumbersGetter = new NonogramNumbersGetter(grid);
-    HintGetter solver = new HintGetter(grid, 8, 1);
-    System.out.println(solver.getHint());
-    nonogramNumbersGetter.getRowNumbers();
+    RGBKeyNumbersGetter rgbKeyNumbersGetter = new RGBKeyNumbersGetter(RGBgrid);
+    // rgbKeyNumbersGetter.getColumnColorNumbers(2);
+    rgbKeyNumbersGetter.getRowColorNumbers(2);
+    HintGetter solver = new HintGetter(RGBgrid);
+
+    // System.out.println(solver.getHint(8, 6));
+
+
+    /*nonogramNumbersGetter.getRowNumbers();
     nonogramNumbersGetter.getColumnNumbers(); */
   }
 }
