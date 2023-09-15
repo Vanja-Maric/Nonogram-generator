@@ -139,19 +139,19 @@ public class RGBCellCounts {
      * @param imageGrid The 2D array representing the image grid.
      * @throws IllegalArgumentException throws if the image grid is null or has invalid dimensions.
      */
-  public void setImageGrid(int[][] imageGrid) {
+  private void setImageGrid(int[][] imageGrid) {
     if (imageGrid == null) {
       throw new IllegalArgumentException("Please add image grid. Image grid cannot be 0.");
     }
 
     int numberOfRows = imageGrid.length;
     if (numberOfRows <= 0) {
-      throw new IllegalArgumentException("Number of rows in image grid cannot be 0.");
+      throw new IllegalArgumentException("Number of rows in image grid cannot be less than 1.");
     }
 
     int numberOfColumns = imageGrid[0].length;
     if (numberOfColumns <= 0) {
-      throw new IllegalArgumentException("Number of rows in image grid cannot be 0.");
+      throw new IllegalArgumentException("Number of rows in image grid cannot be less than 1.");
     }
 
     this.imageGrid = imageGrid;

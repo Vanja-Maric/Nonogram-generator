@@ -8,7 +8,7 @@ class Main {
     RGBCellCounts rgbKeyNumbersGetter = new RGBCellCounts(RGBgrid);
     // rgbKeyNumbersGetter.getColumnColorNumbers(2);
     rgbKeyNumbersGetter.getRowCellCounts(3);
-    HintGetter solver = new HintGetter(RGBgrid);
+    // HintGetter solver = new HintGetter(RGBgrid);
 
     // System.out.println(solver.getHint(8, 6));
 
