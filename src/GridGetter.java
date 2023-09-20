@@ -78,14 +78,14 @@ public class GridGetter {
   }
 
   /**
-   * Changes grid that coitains rgb to grid that contains 0 for transparent pixels (cells) 
-   * and 1 for pixels (cells) that are not transparent
+   * Changes grid that coitains rgb to grid that contains name white for transparent pixels (cells) 
+   * and black for pixels (cells) that are not transparent
    *
-   * @returns Grid with 1 and 0 cells.
+   * @returns Grid with black and white cells.
    */
-  public int[][] getBlackAndWhiteGrid() {
+  public String [][] getBlackAndWhiteGrid() {
     int[][] gridCellsTable = getGrid();
-    int[][] blackAndWhiteGrid = new int[gridCellsTable.length][gridCellsTable[0].length];
+    String[][] blackAndWhiteGrid = new String [gridCellsTable.length][gridCellsTable[0].length];
     int imageHeight = gridCellsTable.length;
     int imageWidth = gridCellsTable[0].length;
 
@@ -100,28 +100,28 @@ public class GridGetter {
   }
 
     /**
-   * Changes pixel (cell) value to 1 if it is higher than 0. (Pixel not compeleteley transparent)
+   * Changes pixel (cell) value to black if it is higher than 0. (Pixel not compeleteley transparent)
    *
-   * @returns Pixel (cell) value that is 1 or 0
+   * @returns Pixel (cell) value that is black or white
    */
-  private int determineBlackOrWhiteCell(int cell) {
+  private String determineBlackOrWhiteCell(int cell) {
+    String cellColor = "white";
     if (cell != 0) {
-      cell = 1;
-    }
-    return cell;
+      cellColor = "black";
+    } 
+    return cellColor;
   }
 
   /**
-   * Changes grid that coitains rgb to grid that contains 0 (White) for transparent pixels (cells) 
-   * 1 for pixels (cells) that are not red or closest to red
-   * 2 for pixels (cells) that are green or closest to green
-   * 3 for pixels (cells) that are blue or closest to blue, or equaly close to 2 of mentioned colors
+   * Converts grid to red, blue and green colors with help of rgb value if the rgb is not 0
+   * If the rgb value is niether of these colors, cells (pixels) color is set to closest of these 3 colors
+   * If the rgb value is 0 (transparent pixel) the value of cell (pixel) will be set to white
    *
-   * @returns Grid with 1, 2, 3 and 0 cells.
+   * @returns Grid with colored cells.
    */
-  public int[][] getRedBlueGreenWhiteGrid() {
+  public String [][] getRedBlueGreenWhiteGrid() {
     int[][] gridCellsTable = getGrid();
-    int[][] redGreenBlueWhiteColorsGrid = new int[gridCellsTable.length][gridCellsTable[0].length];
+    String [][] redGreenBlueWhiteColorsGrid = new String[gridCellsTable.length][gridCellsTable[0].length];
     int imageHeight = gridCellsTable.length;
     int imageWidth = gridCellsTable[0].length;
     Color red = new Color(255, 0, 0);
@@ -134,6 +134,7 @@ public class GridGetter {
             gridCellsTable[rowIndex][columnIndex], red, green, blue);
       }
     }
+    printGrid(redGreenBlueWhiteColorsGrid);
     return redGreenBlueWhiteColorsGrid;
   }
 
@@ -155,18 +156,14 @@ public class GridGetter {
   }
 
    /**
-   * Changes pixel rgb value to cell (pixel value) that is 1, 2, 3, 0
-   * If the pixels rgb value is 0 it remains 0
-   * It the pixels rgb value is closest to red color cell gets value 1
-   * It the pixels rgb value is closest to green color cell gets value 2
-   * It the pixels rgb value is closest to blue color cell gets value 3
+   * Changes pixel rgb value to cell (pixel value) that is red, blue, green
+   * If the pixels rgb value is 0 it gets white color
    *
-   * @returns Pixel (cell) value that is 1, 2, 3 or 0
+   * @returns Pixel (cell) color
    */
-  private int determineRedGreenBlueWhiteCell(int cell, Color red, Color green, Color blue) {
-    if (cell == 0) {
-      cell = 0;
-    } else {
+  private String determineRedGreenBlueWhiteCell(int cell, Color red, Color green, Color blue) {
+    String colorCell = "white";
+    if (cell != 0) {
       Color pixelColor = new Color(cell);
 
       double distanceFromRed = distanceFromRedBlueOrGreen(pixelColor, red);
@@ -174,17 +171,17 @@ public class GridGetter {
       double distanceFromBlue = distanceFromRedBlueOrGreen(pixelColor, blue);
 
       if (distanceFromRed < distanceFromGreen && distanceFromRed < distanceFromGreen) {
-        cell = 1; // Red
+        colorCell = "red"; 
       } else if (distanceFromGreen < distanceFromBlue) {
-        cell = 2; // Green
+        colorCell = "green";
       } else {
-        cell = 3; // Blue (Eaven if it is equal amount of 2 colors)
+        colorCell = "blue"; //Eaven if it is equal amount of 2 colors
       }
     }
-    return cell;
+    return colorCell;
   }
 
-  private void printGrid(int[][] grid) {
+  private void printGrid(String [][] grid) {
     for (int rowIndex = 0; rowIndex < grid.length; rowIndex++) {
       for (int columnIndex = 0; columnIndex < grid[0].length; columnIndex++) {
         System.out.print(grid[rowIndex][columnIndex] + " ");

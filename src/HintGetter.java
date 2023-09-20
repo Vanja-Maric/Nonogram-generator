@@ -2,7 +2,7 @@
  * Provides hints from an image grid at specific grid cell.
  */
 public class HintGetter {
-  private int[][] imageGrid;
+  private String [][] imageGrid;
 
   /**
    * Constructs a HintGetter object with the given image grid.
@@ -11,20 +11,25 @@ public class HintGetter {
    * @throws IllegalArgumentException if the image grid is null or has invalid
    *                                  dimensions.
    */
-  public HintGetter(int[][] imageGrid) {
+  public HintGetter(String [][] imageGrid) {
     setImageGrid(imageGrid);
   }
 
   /**
    * Retrieves a hint from the image grid at the specified row and column indixes.
    *
-   * @param rowIndex    The index of the row in the image grid.
-   * @param columnIndex The index of the column in the image grid.
-   * @return The hint value at the specified row and column.
+   * @param cellsRowIndex    The index of the row in the image grid.
+   * @param cellsColumnIndex The index of the column in the image grid.
+   * @return The hint color value at the specified row and column.
    */
-  public int getHint(int rowIndex, int columnIndex) {
-    // Validation???
-    return imageGrid[setRowIndex(rowIndex)][setColumnIndex(columnIndex)];
+  public String getHint(int cellsRowIndex, int cellsColumnIndex) {
+    if (cellsRowIndex > imageGrid.length - 1 || cellsRowIndex < 0) {
+      throw new IllegalArgumentException("Row index cannot have index less than 0 or bitgger than " + (imageGrid.length - 1) + ".");
+    } 
+    if (cellsColumnIndex > imageGrid[0].length - 1 || cellsColumnIndex < 0) {
+      throw new IllegalArgumentException("Column index cannot have index less than 0 or bitgger than " + (imageGrid[0].length - 1) + ".");
+    }
+    return imageGrid[setRowIndex(cellsRowIndex)][setColumnIndex(cellsColumnIndex)];
   }
 
   /**
@@ -34,7 +39,7 @@ public class HintGetter {
    * @throws IllegalArgumentException throws if the image grid is null or has
    *                                  invalid dimensions.
    */
-  private void setImageGrid(int[][] imageGrid) {
+  private void setImageGrid(String [][] imageGrid) {
     if (imageGrid == null) {
       throw new IllegalArgumentException("Please add image grid. Image grid cannot be 0.");
     }

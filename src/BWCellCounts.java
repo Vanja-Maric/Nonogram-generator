@@ -5,14 +5,14 @@ import java.util.ArrayList;
  * containing values (0 and 1).
  */
 public class BWCellCounts {
-  int[][] imageGrid;
+  String[][] imageGrid;
 
   /**
    * Constructs a BWCellCounts object with the given image grid.
    *
    * @param imageGrid The 2D array representing the image grid.
    */
-  public BWCellCounts(int[][] imageGrid) {
+  public BWCellCounts(String[][] imageGrid) {
     setImageGrid(imageGrid);
   }
 
@@ -21,8 +21,22 @@ public class BWCellCounts {
    *
    * @return A 2D ArrayList containing the cell counts in each row.
    */
-  public ArrayList<ArrayList<Integer>> getRowCellCounts() {
-    return getCellCounts(true);
+  public ArrayList<ArrayList<Integer>> getRowBlackCellCounts() {
+    int numberOfRows = imageGrid.length;
+    int numberOfColumns = imageGrid[0].length;
+
+    ArrayList<ArrayList<Integer>> rowCellCounts2DList = new ArrayList<>();
+
+    for (int rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
+      String [] oneRow = new String[numberOfColumns];
+      oneRow = imageGrid[rowIndex];
+      ArrayList<Integer> lineCellCounts = new ArrayList<>();
+      lineCellCounts = getBlackCellCountsInOneLine(oneRow);
+      rowCellCounts2DList.add(lineCellCounts);
+  }
+  
+  print2DArrayList(rowCellCounts2DList);
+    return rowCellCounts2DList;
   }
 
   /**
@@ -30,68 +44,53 @@ public class BWCellCounts {
    *
    * @return A 2D ArrayList containing the cell counts in each column.
    */
-  public ArrayList<ArrayList<Integer>> getColumnCellCount() {
-    return getCellCounts(false);
-  }
-
-  /**
-   * Calculates cell counts in rows or columns of the image grid.
-   *
-   * @param isRow If true, calculates cell counts in rows; if false, calculates
-   *              cell counts in columns.
-   * @return A 2D ArrayList containing the cell counts in row or column.
-   */
-  private ArrayList<ArrayList<Integer>> getCellCounts(boolean isRow) {
+  public ArrayList<ArrayList<Integer>> getColumnBlackCellCount() {
     int numberOfRows = imageGrid.length;
     int numberOfColumns = imageGrid[0].length;
-    ArrayList<ArrayList<Integer>> cellCountList = new ArrayList<>();
-    int maxIterations;
+    ArrayList<ArrayList<Integer>> columnCellCount2DList = new ArrayList<>();
 
-    if (isRow) {
-      maxIterations = numberOfRows;
-    } else {
-      maxIterations = numberOfColumns;
-    }
-    for (int i = 0; i < maxIterations; i++) {
-      ArrayList<Integer> oneLineList = new ArrayList<>();
-      int count = 0;
-      boolean containsOnly0 = true;
-
-      int innerMax;
-      if (isRow) {
-        innerMax = numberOfColumns;
-      } else {
-        innerMax = numberOfRows;
+    for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+      String [] colorsInOneColumn = new String [numberOfRows];
+      // Get same column index from every row and store it in array that represents column line
+      for ( int rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
+         colorsInOneColumn[rowIndex] = imageGrid[rowIndex][columnIndex];
       }
-      for (int j = 0; j < innerMax; j++) {
-        int cellValue;
-        if (isRow) {
-          cellValue = imageGrid[i][j];
-        } else {
-          cellValue = imageGrid[j][i];
-        }
-        if (cellValue == 1) {
+      ArrayList<Integer> lineCellCounts = new ArrayList<>();
+      lineCellCounts = getBlackCellCountsInOneLine(colorsInOneColumn);
+      columnCellCount2DList.add(lineCellCounts);
+    }
+    print2DArrayList(columnCellCount2DList);
+    return columnCellCount2DList;
+  }
+
+   /**
+   * Counts the black cells in a single row/column (line) for the specified
+   * color number.
+   *
+   * @param lineToAnalyze The array representing a row or column.
+   */
+  private ArrayList<Integer> getBlackCellCountsInOneLine (String [] lineToAnalyse) {
+    ArrayList<Integer> counts = new ArrayList<>(); 
+     int count = 0;
+      boolean containsOnly0 = true;
+    for (String blackOrWhiteValue : lineToAnalyse) {
+       if (blackOrWhiteValue == "black") {
           count++;
           containsOnly0 = false;
         } else {
           if (count != 0) {
-            oneLineList.add(count);
+            counts.add(count);
             count = 0;
           }
-        }
-      }
-
-      if (count != 0) {
-        oneLineList.add(count);
-      }
-      if (containsOnly0) {
-        oneLineList.add(0);
-      }
-
-      cellCountList.add(oneLineList);
     }
-    print2DArrayList(cellCountList);
-    return cellCountList;
+  }
+     if (count != 0) {
+      counts.add(count);
+    }
+    if (containsOnly0) {
+      counts.add(0);
+    }
+    return counts;
   }
 
   /**
@@ -101,7 +100,7 @@ public class BWCellCounts {
    * @throws IllegalArgumentException throws if the image grid is null or has
    *                                  invalid dimensions.
    */
-  private void setImageGrid(int[][] imageGrid) {
+  private void setImageGrid(String[][] imageGrid) {
     if (imageGrid == null) {
       throw new IllegalArgumentException("Please add image grid. Image grid cannot be 0.");
     }
@@ -126,6 +125,5 @@ public class BWCellCounts {
       }
       System.out.println();
     }
-    System.out.println(cellCounts2DList.size());
   }
 }
