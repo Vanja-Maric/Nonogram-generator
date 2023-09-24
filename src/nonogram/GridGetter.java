@@ -140,7 +140,7 @@ public class GridGetter {
 
   private void setNumberOfColumns(int numberOfColumns) {
     if (numberOfColumns <= 0) {
-      throw new IllegalArgumentException("Number of rows in image grid cannot be less than 1.");
+      throw new IllegalArgumentException("Number of columns in image grid cannot be less than 1.");
     }
     this.numberOfColumns = numberOfColumns;
   }
