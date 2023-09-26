@@ -2,12 +2,13 @@
 
 ## Beskrivning
 Nonogram Generator är en modul som omvandlar PNG-bilder till nonogram grid. Den konverterar inte bara bilder till spelbara pussel, utan genererar även räknenycklar (cell counts) och ger ledtrådar för att hjälpa till att lösa de skapade rutnätet. 
+Mer information om hur man spelar Nonogram-spelet finns här: [Nonogram](https://sv.wikipedia.org/wiki/Japanskt_bildkryss)
 
 ## Installation
 För att använda Nonogram Generator, följ dessa enkla steg:
 
-1. Ladda ner följande JAR: [jar]()
-2. lägga till den till din app
+1. Ladda ner följande JAR: [jar](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/nonogramGenerator.jar)
+2. Lägg till den till din app
 
 ## Tillgängliga Klasser och Metoder
 Här är en översikt över de tillgängliga klasserna och deras metoder:
@@ -141,9 +142,16 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ##### Exempel:
 ```Box horizontalColorsOfColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsColorsOfCounts(rgbCellCounts.getColorsOfCellCountsColumns());```
 
-## TEST-APP OCH TESTNING
+## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).
 I detta repositorium i mappen tests/testrapport hittar du testning dokumentation:
 - [Test beskrivning](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testsDescription.md)
 - [Test specifikation](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testspecification.md) - innehåller ett antal testfall där du med hjälp av testapplikationen kan testa nonogram-generatormogulen manuellt
 - [Testresultaten]()https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testResultalen.md
+
+## Hur du kan bidra
+Du är välkommen att bidra till detta projekt. Följ dessa steg:
+
+1. Skapa en fork av den här depån (repositoriet).
+2. Gör dina ändringar.
+3. Skicka in en Pull Request.
