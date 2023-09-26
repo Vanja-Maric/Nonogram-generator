@@ -1,4 +1,4 @@
-# Nonogram Generator
+# Nonogram Generator Vesrsion 1.0.0
 
 ## Beskrivning
 Nonogram Generator är en modul som omvandlar PNG-bilder till nonogram grid. Den konverterar inte bara bilder till spelbara pussel, utan genererar även räknenycklar (cell counts) och ger ledtrådar för att hjälpa till att lösa de skapade rutnätet. 
@@ -148,6 +148,13 @@ I detta repositorium i mappen tests/testrapport hittar du testning dokumentation
 - [Test beskrivning](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testsDescription.md)
 - [Test specifikation](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testspecification.md) - innehåller ett antal testfall där du med hjälp av testapplikationen kan testa nonogram-generatormogulen manuellt
 - [Testresultaten]()https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testResultalen.md
+
+## Buggrapporter/issues
+1. Den nuvarande versionen fungerar pålitligt endast med bilder i PNG-format.
+2. På grund av så liten antal av celler i gridden blir det väldigt svårt att känna igen de grundläggande former och konturer som finns i original bilden i nonogram gridden om antalet rader och/eller kolumner är färre än 10.
+
+## License
+[Öppna här](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/LICENSE)
 
 ## Hur du kan bidra
 Du är välkommen att bidra till detta projekt. Följ dessa steg:
