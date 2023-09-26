@@ -8,7 +8,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-// Creates image grid with marked colored and white cells for nonogram game.
+/**
+ * Creates image grid with marked colored and white cells for nonogram game.
+ */
 public class GridGetter {
   private int numberOfRows;
   private int numberOfColumns;
@@ -56,6 +58,12 @@ public class GridGetter {
     return pixels;
   }
 
+  /**
+   * Returns a two-dimensional array representing a black and white grid.
+   * Each element in the grid is a representation of a black or white cell.
+   *
+   * @return Two-dimensional array representing the black and white grid.
+   */
   public String[][] getBlackAndWhiteGrid() {
     int[][] gridCellsTable = getGrid();
     String[][] blackAndWhiteGrid = new String[gridCellsTable.length][gridCellsTable[0].length];
@@ -70,7 +78,8 @@ public class GridGetter {
     return blackAndWhiteGrid;
   }
 
-  // Changes pixels (cells) rgn value to black if its rgb value is higher than 0 (pixel not compeleteley transparent)
+  // Changes pixels (cells) rgn value to black if its rgb value is higher than 0
+  // (pixel not compeleteley transparent)
   // and to white if the rgb value is 0
   private String determineBlackOrWhiteCell(int cell) {
     String cellColor = "white";
@@ -80,6 +89,12 @@ public class GridGetter {
     return cellColor;
   }
 
+   /**
+   * Returns a two-dimensional array representing a red, green, blue and white grid.
+   * Each element in the grid is a representation of a red, green, blue  and white cell.
+   *
+   * @return Two-dimensional array representing the red, green, blue and white grid.
+   */
   public String[][] getRedBlueGreenWhiteGrid() {
     int[][] gridCellsTable = getGrid();
     String[][] redGreenBlueWhiteColorsGrid = new String[gridCellsTable.length][gridCellsTable[0].length];
@@ -98,8 +113,9 @@ public class GridGetter {
     return redGreenBlueWhiteColorsGrid;
   }
 
-    // The Euclidean distance between two points in three-dimensional space (RGB color)
-    // Formula: sqrt((x1 - x2)^2 + (y1 - y2)^2 + (z1 - z2)^2)
+  // The Euclidean distance between two points in three-dimensional space (RGB
+  // color)
+  // Formula: sqrt((x1 - x2)^2 + (y1 - y2)^2 + (z1 - z2)^2)
   private double distanceFromRedBlueOrGreen(Color pixelColor, Color exempelGBColor) {
     int distanceFromRed = pixelColor.getRed() - exempelGBColor.getRed();
     int distanceFromGreen = pixelColor.getGreen() - exempelGBColor.getGreen();
@@ -109,7 +125,8 @@ public class GridGetter {
   }
 
   // Changes pixels rgb value to cells (pixels value) that is red, blue, green.
-  // If the rgb value is niether of these colors, cells (pixels) color is set to closest of these 3 colors.
+  // If the rgb value is niether of these colors, cells (pixels) color is set to
+  // closest of these 3 colors.
   // If the pixels rgb value is 0 it gets white color.
   private String determineRedGreenBlueWhiteCell(int cell, Color red, Color green, Color blue) {
     String colorCell = "white";

@@ -2,11 +2,13 @@ package nonogram;
 
 import java.util.ArrayList;
 
-// This class counts colored cells in rows and columns of an image grid.
-public class RGBCellCounts {
+/**
+ * Generar counts colored cells in rows and columns of an image grid.
+ */
+public class RedGreenBlueCellCounts {
   String[][] imageGrid;
 
-  public RGBCellCounts(String[][] imageGrid) {
+  public RedGreenBlueCellCounts(String[][] imageGrid) {
     setImageGrid(imageGrid);
   }
 
@@ -93,7 +95,7 @@ public class RGBCellCounts {
   }
 
   // Gets all colors of cell counts in all rows or all columns.
-  private ArrayList<ArrayList<Integer>> getColorCellCountsForAllRowsOrColumns(
+  private ArrayList<ArrayList<Integer>> getCellCountsForAllRowsOrColumns(
       ArrayList<ArrayList<Integer>> redCountsinAllRowsOrColumns,
       ArrayList<ArrayList<Integer>> greenCountsInAllRowsOrColumns,
       ArrayList<ArrayList<Integer>> blueCountsInAllRowsOrColumns) {
@@ -121,7 +123,7 @@ public class RGBCellCounts {
   }
 
   // Gets colors of cell counts for all colors in all rows or all columns.
-  private ArrayList<ArrayList<String>> getColorsOfCellCounts(ArrayList<ArrayList<Integer>> redCountsinAllRowsOrColumns,
+  private ArrayList<ArrayList<String>> getCountsColors(ArrayList<ArrayList<Integer>> redCountsinAllRowsOrColumns,
       ArrayList<ArrayList<Integer>> greenCountsInAllRowsOrColumns,
       ArrayList<ArrayList<Integer>> blueCountsInAllRowsOrColumns) {
     ArrayList<ArrayList<String>> colors = new ArrayList<>();
@@ -145,23 +147,51 @@ public class RGBCellCounts {
     return colors;
   }
 
-  public ArrayList<ArrayList<Integer>> getColorCellCountsRows() {
-    return getColorCellCountsForAllRowsOrColumns(getRowCellCountsforOneColor("red"),
+  /**
+   * Returns the red, green and blue cell counts for rows.
+   *
+   * @return A 2D ArrayList where each row in ArrayList represents cell counts for
+   *         one row and
+   *         all colors.
+   */
+  public ArrayList<ArrayList<Integer>> getCellCountsRows() {
+    return getCellCountsForAllRowsOrColumns(getRowCellCountsforOneColor("red"),
         getRowCellCountsforOneColor("green"), getRowCellCountsforOneColor("blue"));
   }
 
-  public ArrayList<ArrayList<Integer>> getColorCellCountsColumns() {
-    return getColorCellCountsForAllRowsOrColumns(getColumnCellCountsForOneColor("red"),
+  /**
+   * Returns the red, green and blue cell counts for columns.
+   *
+   * @return A 2D ArrayList where each row in ArrayList represents cell counts for
+   *         one column and
+   *         all colors.
+   */
+  public ArrayList<ArrayList<Integer>> getCellCountsColumns() {
+    return getCellCountsForAllRowsOrColumns(getColumnCellCountsForOneColor("red"),
         getColumnCellCountsForOneColor("green"), getColumnCellCountsForOneColor("blue"));
   }
 
-  public ArrayList<ArrayList<String>> getColorsOfCellCountsRows() {
-    return getColorsOfCellCounts(getRowCellCountsforOneColor("red"), getRowCellCountsforOneColor("green"),
+  /**
+   * Returns the colors of cell counts for rows.
+   *
+   * @return A 2D ArrayList where each row in ArrayList represents color of cell
+   *         counts (red, green, blue) for one
+   *         row.
+   */
+  public ArrayList<ArrayList<String>> getCountsColorsRows() {
+    return getCountsColors(getRowCellCountsforOneColor("red"), getRowCellCountsforOneColor("green"),
         getRowCellCountsforOneColor("blue"));
   }
 
-  public ArrayList<ArrayList<String>> getColorsOfCellCountsColumns() {
-    return getColorsOfCellCounts(getColumnCellCountsForOneColor("red"),
+  /**
+   * Returns the colors of cell counts for column.
+   *
+   * @return A 2D ArrayList where each row in ArrayList represents color of cell
+   *         counts (red, green, blue) for one
+   *         column.
+   */
+  public ArrayList<ArrayList<String>> getCountsColorsColumns() {
+    return getCountsColors(getColumnCellCountsForOneColor("red"),
         getColumnCellCountsForOneColor("green"), getColumnCellCountsForOneColor("blue"));
   }
 

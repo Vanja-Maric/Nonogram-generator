@@ -1,6 +1,8 @@
 package nonogram;
 
-// Provides hints from an image grid for a specified grid cell.
+/**
+ * Provides hints from an image grid for a specified grid cell.
+ */
 public class HintGetter {
   private String[][] imageGrid;
 
@@ -8,7 +10,9 @@ public class HintGetter {
     setImageGrid(imageGrid);
   }
 
-  // Retrieves a hint from the image grid at the specified row and column indixes.
+  /**
+   * Retrieves a hint from the image grid at the specified row and column indixes.
+   */
   public String getHint(int cellsRowIndex, int cellsColumnIndex) {
     if (cellsRowIndex > imageGrid.length - 1 || cellsRowIndex < 0) {
       throw new IllegalArgumentException(

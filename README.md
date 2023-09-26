@@ -50,8 +50,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ##### Exempel:
 ```System.out.println(hintGetterBW.getHint(13, 5));```
 
-### Klass BWCellCounts(String[][] imageGrid) 
-```new BWCellCounts(nonogramGrid).getAllColumnsBlackCellCount()```
+### Klass BlackWhiteCellCounts(String[][] imageGrid) 
+```new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()```
 
 #### METOD 1:
 - ```ArrayList<ArrayList<Integer>> getAllRowsBlackCellCounts()```
@@ -67,12 +67,12 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ```for (int row = 0; row < nonogramGrid.length; row++) {```
      ``` Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);```
       ```if (isBlackAndWhite) {```
-        ```nonogramCounsKeys.addNonogramOneRowCounts(new BWCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),```
+        ```nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),```
             ```buttonRowBox);```
     ```  } else {```
-        ```RGBCellCounts rgbCellCounts = new RGBCellCounts(nonogramGrid);```
-    ```    nonogramCounsKeys.addNonogramOneRowCounts(rgbCellCounts.getColorCellCountsRows().get(row), buttonRowBox);```
-    ```    nonogramCounsKeys.addNonogramOneRowColoursOfCounts(rgbCellCounts.getColorsOfCellCountsRows().get(row),```
+        ```RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);```
+    ```    nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);```
+    ```    nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),```
          ```   buttonRowBox);```
      ``` }```
     ```  verticalBoxforButtonRows.add(buttonRowBox);```
@@ -91,14 +91,14 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
     ```NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();```
    ``` if (isBlackAndWhite) {```
    ```   verticalBoxforButtonRows.add(```
-          ```nonogramCounsKeys.addNonogramAllColumnsCounts(new BWCellCounts(nonogramGrid).getAllColumnsBlackCellCount()));```
+          ```nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()));```
     ```}```
 
-### Klass GBCellCounts(String[][] imageGrid) 
-```RGBCellCounts rgbCellCounts = new RGBCellCounts(nonogramGrid);```
+### Klass RedGreenBlueCellCounts(String[][] imageGrid) 
+```RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);```
 
 #### METOD 1:
-- ```public ArrayList<ArrayList<Integer>> getColorCellCountsRows()```
+- ```public ArrayList<ArrayList<Integer>> getCellCountsRows()```
 
 ##### Beskrivning:
 - Denna metod skapar räknenycklar (cell counts) för sammanhängande röda, gröna eller blåa celler som finna i varje rad med mellanrum mellan grupper av sammafärgade celler för laddade gridden.
@@ -106,10 +106,10 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
 ##### Exempel:
-```nonogramCounsKeys.addNonogramOneRowCounts(rgbCellCounts.getColorCellCountsRows().get(row), buttonRowBox);```
+```nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);```
 
 #### METOD 2:
-- ```ArrayList<Integer>> getColorCellCountsColumns()```
+- ```ArrayList<Integer>> getCellCountsColumns()```
 
 ##### Beskrivning:
 - Denna metod skapar räknenycklar (cell counts) för sammanhängande röda, gröna eller blåa celler som finna i varje kolumn med mellanrum mellan grupper av sammafärgade celler för laddade gridden.
@@ -117,10 +117,10 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
 
 ##### Exempel:
-```Box horizontalColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsCounts(rgbCellCounts.getColorCellCountsColumns());```
+```Box horizontalColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsCounts(RedGreenBLueCellCounts.getCellCountsColumns());```
 
 #### METOD 3:
-- ```ArrayList<ArrayList<String>> getColorsOfCellCountsRows()```
+- ```ArrayList<ArrayList<String>> getCountsColorsRows()```
 
 ##### Beskrivning:
 - Denna metod skapar färg av räknenycklar (cell counts) för laddade gridden.
@@ -128,11 +128,11 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
 ##### Exempel:
-```nonogramCounsKeys.addNonogramOneRowColoursOfCounts(rgbCellCounts.getColorsOfCellCountsRows().get(row),buttonRowBox);```
+```nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),buttonRowBox);```
 
 
 #### METOD 4:
-- ```ArrayList<ArrayList<String>> getColorsOfCellCountsColumns()```
+- ```ArrayList<ArrayList<String>> getCountsColorsColumns()```
 
 ##### Beskrivning:
 - Denna metod skapar färg (red, green or blue) av räknenycklar (cell counts) för laddade gridden.
@@ -140,7 +140,7 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
 
 ##### Exempel:
-```Box horizontalColorsOfColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsColorsOfCounts(rgbCellCounts.getColorsOfCellCountsColumns());```
+```Box horizontalColorsOfColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsColorsOfCounts(RedGreenBLueCellCounts.getCountsColorsColumns());```
 
 ## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).

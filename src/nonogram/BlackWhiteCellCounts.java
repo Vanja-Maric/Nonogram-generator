@@ -2,15 +2,19 @@ package nonogram;
 
 import java.util.ArrayList;
 
-// This class counts black and white cells in rows and columns of an image grid.
-public class BWCellCounts {
+/**
+ * Genererar counts black and white cells in rows and columns of an image grid.
+ */ 
+public class BlackWhiteCellCounts {
   String[][] imageGrid;
 
-  public BWCellCounts(String[][] imageGrid) {
+  public BlackWhiteCellCounts(String[][] imageGrid) {
     setImageGrid(imageGrid);
   }
 
-  // Gets the cell counts in all rows of the image grid.
+  /**
+   * Gets the cell counts in all rows of the image grid.
+   */
   public ArrayList<ArrayList<Integer>> getAllRowsBlackCellCounts() {
     int numberOfRows = imageGrid.length;
     int numberOfColumns = imageGrid[0].length;
@@ -27,7 +31,9 @@ public class BWCellCounts {
     return rowCellCounts2DList;
   }
 
-  // Gets the cell counts in all columns of the image grid.
+  /** 
+   * Gets the cell counts in all columns of the image grid.
+   */
   public ArrayList<ArrayList<Integer>> getAllColumnsBlackCellCount() {
     int numberOfRows = imageGrid.length;
     int numberOfColumns = imageGrid[0].length;
@@ -35,8 +41,7 @@ public class BWCellCounts {
 
     for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
       String[] colorsInOneColumn = new String[numberOfRows];
-      // Get same column index from every row and store it in array that represents
-      // column line
+      // Get same column index from every row and store it in array that represents column line
       for (int rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
         colorsInOneColumn[rowIndex] = imageGrid[rowIndex][columnIndex];
       }
@@ -51,11 +56,11 @@ public class BWCellCounts {
   private ArrayList<Integer> getBlackCellCountsInOneLine(String[] lineToAnalyse) {
     ArrayList<Integer> counts = new ArrayList<>();
     int count = 0;
-    boolean containsOnly0 = true;
+    boolean containsOnlyZero = true;
     for (String blackOrWhiteValue : lineToAnalyse) {
       if (blackOrWhiteValue == "black") {
         count++;
-        containsOnly0 = false;
+        containsOnlyZero = false;
       } else {
         if (count != 0) {
           counts.add(count);
@@ -66,7 +71,7 @@ public class BWCellCounts {
     if (count != 0) {
       counts.add(count);
     }
-    if (containsOnly0) {
+    if (containsOnlyZero) {
       counts.add(0);
     }
     return counts;
