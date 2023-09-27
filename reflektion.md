@@ -11,7 +11,7 @@
 
 | Metodnamn och länk eller kod | Antal rader | Reflektion |
 | -------- | -------- | -------- |
-|   private ArrayList<Integer> getOneColorCellCountsInOneLine(String[] lineToAnalyse, String color) {
+| ```private ArrayList<Integer> getOneColorCellCountsInOneLine(String[] lineToAnalyse, String color) {
     color = color.toLowerCase().trim();
     if (!color.equals("red") && !color.equals("green") && !color.equals("blue")) {
       throw new IllegalArgumentException("Please eneter a valid color name - red, green or blue.");
@@ -49,7 +49,7 @@
       colorCounts.add(0);
     }
     return colorCounts;
-  } | 35 ||
+    }```| 35 ||
 ||||
 ||||
 ||||
