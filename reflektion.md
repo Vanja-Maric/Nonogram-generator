@@ -15,43 +15,43 @@
 private ArrayList<Integer> getOneColorCellCountsInOneLine(String[] lineToAnalyse, String color) {
     color = color.toLowerCase().trim();
     if (!color.equals("red") && !color.equals("green") && !color.equals("blue")) {
-      throw new IllegalArgumentException("Please eneter a valid color name - red, green or blue.");
+        throw new IllegalArgumentException("Please eneter a valid color name - red, green or blue.");
     }
     ArrayList<Integer> colorCounts = new ArrayList<>(); // Make a new sublist that will be added to 2D array
     String lastCheckedColor = "white";
     boolean containsOnlyWhite = true;
     int count = 0;
     for (String colorValue : lineToAnalyse) {
-      if (colorValue.equals(color)) {
-        if (!lastCheckedColor.equals(color) && !lastCheckedColor.equals("white") && containsOnlyWhite) {
-          // If it is the first time that the color appears in that chain
-          colorCounts.add(0); // Push 0 to know that there is som other colored number in front of this.
+        if (colorValue.equals(color)) {
+            if (!lastCheckedColor.equals(color) && !lastCheckedColor.equals("white") && containsOnlyWhite) {
+                // If it is the first time that the color appears in that chain
+                colorCounts.add(0); // Push 0 to know that there is some other colored number in front of this.
+            }
+            count++;
+            containsOnlyWhite = false;
+        } else if (!colorValue.equals(color) && lastCheckedColor.equals(color)) {
+            colorCounts.add(count); // If it is the first time some other number
+            count = 0; // appears after a chain of this colored number
         }
-        count++;
-        containsOnlyWhite = false;
-      } else if (!colorValue.equals(color) && lastCheckedColor.equals(color)) {
-        colorCounts.add(count); // If it is the first time some other number
-        count = 0; // appears after a chain of this colored number
-      }
-      if (!colorValue.equals("white")) {
-        containsOnlyWhite = false;
-      }
-      // If the number that is not the target color number or 0, add 0 to know that on
-      // that place is some other color number in this line
-      if (!lastCheckedColor.equals(colorValue) && !colorValue.equals("white") && !colorValue.equals(color)) {
-        colorCounts.add(0);
-      }
-      lastCheckedColor = colorValue;
+        if (!colorValue.equals("white")) {
+            containsOnlyWhite = false;
+        }
+        // If the number that is not the target color number or 0, add 0 to know that on
+        // that place is some other color number in this line
+        if (!lastCheckedColor.equals(colorValue) && !colorValue.equals("white") && !colorValue.equals(color)) {
+            colorCounts.add(0);
+        }
+        lastCheckedColor = colorValue;
     }
     if (count != 0) {
-      colorCounts.add(count);
+        colorCounts.add(count);
     }
     if (containsOnlyWhite) {
-      colorCounts.add(0);
+        colorCounts.add(0);
     }
     return colorCounts;
-    }
-    ```| 35 ||
+}
+```| 35 ||
 ||||
 ||||
 ||||
