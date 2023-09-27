@@ -11,7 +11,7 @@
 
 | Metodnamn och länk eller kod | Antal rader | Reflektion |
 | -------- | -------- | -------- |
-| <code>
+|```java
 private ArrayList<Integer> getOneColorCellCountsInOneLine(String[] lineToAnalyse, String color) {
     color = color.toLowerCase().trim();
     if (!color.equals("red") && !color.equals("green") && !color.equals("blue")) {
@@ -51,7 +51,7 @@ private ArrayList<Integer> getOneColorCellCountsInOneLine(String[] lineToAnalyse
     }
     return colorCounts;
 }
-</code>| 35 ||
+```| 35 ||
 ||||
 ||||
 ||||
