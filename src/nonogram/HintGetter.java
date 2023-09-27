@@ -12,6 +12,8 @@ public class HintGetter {
 
   /**
    * Retrieves a hint from the image grid at the specified row and column indixes.
+   * Throws exception if row index have index less than 0 or bitgger than number of rows in image Grid - 1.
+   *  Throws exception if column index have index less than 0 or bitgger than number of columns - 1.
    */
   public String getHint(int cellsRowIndex, int cellsColumnIndex) {
     if (cellsRowIndex > imageGrid.length - 1 || cellsRowIndex < 0) {
