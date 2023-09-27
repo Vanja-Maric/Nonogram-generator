@@ -18,15 +18,13 @@
 |||__Command Query Separation__ - CQS är i viss mån uppfylld - Den främsta syftet med denna metod är att beräkna och returnera en lista över färgantal baserat på argument. Men jag kunde separera felhantering i en separat metod.
 ||| __Prefer Exceptions to Returning Error Codes__ - använder Exception |
 |[determineRedGreenBlueWhiteCell(int cell, Color red, Color green, Color blue) - från line 131](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/src/nonogram/GridGetter.java)| 17 | __Function Arguments__ - Enligt principerna för "Clean Code" bör man inte ha fyra argument i en metod. Jag har funderat mycket på att inte ta in Color-attributer och istället skapa dem som variabler inuti metoden. I denna metod har jag dock valt att ha fyra argument eftersom denna funktion kommer att anropas för varje cell i ett nonogramspel. Om jag skapar tre färger varje gång funktionen anropas kan det fungera bra för en nonogram-grid med 30 rader och 30 kolumner. Men vad händer om man vill ha en nonogram-grid med 500 rader och 500 kolumner? Då skapas det väldigt många Color-klasser, och i det fallet tycker jag att det är bättre att ta in dem som argument.|
-||| __Have No Side Effects__
-Metoden har inga sidoeffekter. Den gör bara den sak som är beskriven i namnet. |
+||| __Have No Side Effects__ - Metoden har inga sidoeffekter. Den gör bara den sak som är beskriven i namnet. |
 |[getBlackCellCountsInOneLine( String[] lineToAnalyse) - från line 56](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/src/nonogram/BlackWhiteCellCounts.java)| 23 |__Common Monadic Forms__ - Metoden tar in en argument, använder den för att få och returnera något annnat. |
 ||| __Verbs and Keywords__ - Namnet på den här metoden, 'getBlackCellCountsInOneLine,' och dess parameter 'lineToAnalyse,' bildar en mycket bra 'verb/noun pair,' vilket gör koden lättare att förstå.
 |
 |[getCellCountsForAllRowsOrColumns(ArrayList<ArrayList<Integer>> redCountsinAllRowsOrColumns, ArrayList<ArrayList<Integer>> greenCountsInAllRowsOrColumns; ArrayList<ArrayList<Integer>> blueCountsInAllRowsOrColumns) - från line 98](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/src/nonogram/RedGreenBlueCellCounts.java)| 22 |
 __Triads__ - Metod tar in 3 arguments. Vid metodanrop använder jag andra metoder som arguments. Då blir koden väldigt svårt att förstå. Jag kunde istället ha inga argumenter alls och argumenter som jag har nu kunde jag anropa som variabler inom metoden.
-__Output Arguments__ -  man bör undvika dem. Alla mina argument är input-argument.
-|
+||| __Output Arguments__ -  man bör undvika dem. Alla mina argument är input-argument.|
 |[getColumnCellCountsForOneColor(String color) - från line 16](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/src/nonogram/RedGreenBlueCellCounts.java)|15| __Small!__ - Metoden har färre än 20 rader. Men om man vill att alla metoder ska ha högst 4 rader, då skulle man kunna dela upp de nästlade looparna i två loopar. Första loopen skulle returnera en ArrayList som sedan skulle användas som antingen ett argument eller kallas som en variabel i den andra loopen. Båda dessa for-loopar skulle kunna separeras i egna metoder. |
 
 
