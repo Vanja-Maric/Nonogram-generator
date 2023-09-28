@@ -145,9 +145,9 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).
 I detta repositorium i mappen tests/testrapport hittar du testning dokumentation:
-- [Test beskrivning](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testsDescription.md)
-- [Test specifikation](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testspecification.md) - innehåller ett antal testfall där du med hjälp av testapplikationen kan testa nonogram-generatormogulen manuellt
-- [Testresultaten]()https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testResultalen.md
+- [Test beskrivning](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testraport/testsDescription.md)
+- [Test specifikation](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testraport/testSpecification.md) - innehåller ett antal testfall där du med hjälp av testapplikationen kan testa nonogram-generatormogulen manuellt
+- [Testresultaten](https://github.com/Vanja-Maric/Nonogram-test-app/blob/main/tests/testraport/testResults.md)
 
 ## Buggrapporter/issues
 1. Den nuvarande versionen fungerar pålitligt endast med bilder i PNG-format.
