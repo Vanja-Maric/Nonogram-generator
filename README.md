@@ -62,20 +62,20 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
 ##### Exempel:
-"Box verticalBoxforButtonRows = Box.createVerticalBox();
- NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();
- for (int row = 0; row < nonogramGrid.length; row++) {
- Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);
- if (isBlackAndWhite) {
- nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),
- buttonRowBox);
+"Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
+ NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();<br>
+ for (int row = 0; row < nonogramGrid.length; row++) {<br>
+ Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);<br>
+ if (isBlackAndWhite) {<br>
+ nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),<br>
+ buttonRowBox);<br>
  } else {
- RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);
- nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);
- nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),
- buttonRowBox);
- }
- verticalBoxforButtonRows.add(buttonRowBox);
+ RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);<br>
+ nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);<br>
+ nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),v
+ buttonRowBox);<br>
+ }<br>
+ verticalBoxforButtonRows.add(buttonRowBox);<br>
  }"
 
 #### METOD 2:
