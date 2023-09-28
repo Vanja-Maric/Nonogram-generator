@@ -1,7 +1,7 @@
 # Nonogram Generator Vesrsion 1.0.0
 
 ## Beskrivning
-Nonogram Generator är en modul som omvandlar PNG-bilder till nonogram grid. Den konverterar inte bara bilder till spelbara pussel, utan genererar även räknenycklar (cell counts) och ger ledtrådar för att hjälpa till att lösa de skapade rutnätet. 
+Nonogram Generator är en modul som omvandlar PNG-bilder till nonogram grid. Den konverterar inte bara bilder till grid för spelbara pussel, utan genererar även räknenycklar (cell counts) och ger ledtrådar för att hjälpa till att lösa de skapade rutnätet. 
 Mer information om hur man spelar Nonogram-spelet finns här: [Nonogram](https://sv.wikipedia.org/wiki/Japanskt_bildkryss)
 
 ## Installation
@@ -38,7 +38,7 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ##### Exempel:
 ```String[][] blackAndWhiteGrid = gridGetter.getRedBlueGreenWhiteGrid();```
 
-## Klass HintGetter(String[][] imageGrid) 
+### Klass HintGetter(String[][] imageGrid) 
 ```HintGetter hintGetterBW = new HintGetter(blackAndWhiteGrid);```
 
 #### METOD 1:
@@ -57,26 +57,26 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - ```ArrayList<ArrayList<Integer>> getAllRowsBlackCellCounts()```
 
 ##### Beskrivning:
-- Denna metod skapar räknenycklar (cell counts) för sammanhängande svarta celler som finna i varje rad med mellanrum mellan grupper av svarta celler för laddade gridden.
+- Denna metod skapar räknenycklar (cell counts) för sammanhängande svarta celler som finns i varje rad med mellanrum mellan grupper av svarta celler för laddade gridden.
 - Den returnerar en 2D ArrayList där varje ArrayList innom den består av en eller flera nummer som visar hur många sammanhängande svarta celler som finns i den raden med mellanrum mellan grupper av svarta celler. 
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
 ##### Exempel:
-``` Box verticalBoxforButtonRows = Box.createVerticalBox();```
-    ```NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();```
-```for (int row = 0; row < nonogramGrid.length; row++) {```
-     ``` Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);```
-      ```if (isBlackAndWhite) {```
-        ```nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),```
-            ```buttonRowBox);```
-    ```  } else {```
-        ```RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);```
-    ```    nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);```
-    ```    nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),```
-         ```   buttonRowBox);```
-     ``` }```
-    ```  verticalBoxforButtonRows.add(buttonRowBox);```
-  ```  }```
+"Box verticalBoxforButtonRows = Box.createVerticalBox();
+ NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();
+ for (int row = 0; row < nonogramGrid.length; row++) {
+ Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);
+ if (isBlackAndWhite) {
+ nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),
+ buttonRowBox);
+ } else {
+ RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);
+ nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);
+ nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),
+ buttonRowBox);
+ }
+ verticalBoxforButtonRows.add(buttonRowBox);
+ }"
 
 #### METOD 2:
 - ```public ArrayList<ArrayList<Integer>> getAllColumnsBlackCellCount()```
@@ -87,12 +87,12 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
 
 ##### Exempel:
-``` Box verticalBoxforButtonRows = Box.createVerticalBox();```
-    ```NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();```
-   ``` if (isBlackAndWhite) {```
-   ```   verticalBoxforButtonRows.add(```
-          ```nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()));```
-    ```}```
+"Box verticalBoxforButtonRows = Box.createVerticalBox();
+ NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();
+ if (isBlackAndWhite) {
+ verticalBoxforButtonRows.add(
+ nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()));
+ }
 
 ### Klass RedGreenBlueCellCounts(String[][] imageGrid) 
 ```RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);```
