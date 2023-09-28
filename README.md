@@ -88,10 +88,10 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ##### Exempel:
 "Box verticalBoxforButtonRows = Box.createVerticalBox();
- NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();
- if (isBlackAndWhite) {
- verticalBoxforButtonRows.add(
- nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()));
+ NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI(); <br>
+ if (isBlackAndWhite) { <br>
+ verticalBoxforButtonRows.add( <br>
+ nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount())); <br>
  }
 
 ### Klass RedGreenBlueCellCounts(String[][] imageGrid) 
