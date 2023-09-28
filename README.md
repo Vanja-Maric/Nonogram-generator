@@ -101,7 +101,7 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - ```public ArrayList<ArrayList<Integer>> getCellCountsRows()```
 
 ##### Beskrivning:
-- Denna metod skapar räknenycklar (cell counts) för sammanhängande röda, gröna eller blåa celler som finna i varje rad med mellanrum mellan grupper av sammafärgade celler för laddade gridden.
+- Denna metod skapar räknenycklar (cell counts) för sammanhängande röda, gröna eller blåa celler som finns i varje rad med mellanrum mellan grupper av sammafärgade celler för laddade gridden.
 - Den returnerar en 2D ArrayList där varje ArrayList innom den består av en eller flera nummer som visar hur många sammanhängande sammafärgade celler som finns i den raden.
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
@@ -124,7 +124,7 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ##### Beskrivning:
 - Denna metod skapar färg av räknenycklar (cell counts) för laddade gridden.
-- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en färg för varje räknenyckel i den raden.
+- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en String som är färgnamn för varje räknenyckel i den raden.
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
 ##### Exempel:
@@ -136,8 +136,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ##### Beskrivning:
 - Denna metod skapar färg (red, green or blue) av räknenycklar (cell counts) för laddade gridden.
-- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en färg för varje räknenyckel i den kolumnen.
-- Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
+- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en String som är färgnamn för varje räknenyckel i den kolumnen.
+- Indexen av den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
 
 ##### Exempel:
 ```Box horizontalColorsOfColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsColorsOfCounts(RedGreenBLueCellCounts.getCountsColorsColumns());```
