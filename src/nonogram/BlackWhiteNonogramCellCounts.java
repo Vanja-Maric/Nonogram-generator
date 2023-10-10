@@ -14,32 +14,37 @@ public class BlackWhiteNonogramCellCounts {
     setNonogramGrid(nonogramGrid);
   }
 
-  /**
-   * Gets the cell counts in all rows of the image grid.
+   /**
+   * Counts and returns the number of consecutive black cells separated by white cells in each row of the nonogram grid.
+   * 
+   * @return ArrayList of ArrayLists of integers that represents the number of black cells in each row of the nonogram grid.
    */
-  public ArrayList<ArrayList<Integer>> getAllRowsBlackCellCounts() {
+  public ArrayList<ArrayList<Integer>> getBlackCellCountsInAllRows() {
     int numberOfRows = nonogramGrid.length;
     int numberOfColumns = nonogramGrid[0].length;
-
-    ArrayList<ArrayList<Integer>> rowCellCounts2DList = new ArrayList<>();
+    ArrayList<ArrayList<Integer>> blackCellCountsInAllRows = new ArrayList<>();
 
     for (int rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
-      String[] oneRow = new String[numberOfColumns];
-      oneRow = nonogramGrid[rowIndex];
-      ArrayList<Integer> lineCellCounts = new ArrayList<>();
-      lineCellCounts = getCountsInOneRowOrCollumn(oneRow);
-      rowCellCounts2DList.add(lineCellCounts);
-    }
-    return rowCellCounts2DList;
-  }
+      String[] colorsInOneRow = new String[numberOfColumns];
+      colorsInOneRow = nonogramGrid[rowIndex];
 
+      ArrayList<Integer> blackCellCountsInOneRow = new ArrayList<>();
+      blackCellCountsInOneRow = getCountsInOneRowOrCollumn(colorsInOneRow);
+
+      blackCellCountsInAllRows.add(blackCellCountsInOneRow);
+    }
+    return blackCellCountsInAllRows;
+  }
+ 
   /**
-   * Gets the cell counts in all columns of the image grid.
+   * Counts and returns the number of consecutive black cells separated by white cells in each column of the nonogram grid.
+   * 
+   * @return ArrayList of ArrayLists of integers that represents the number of black cells in each column of the nonogram grid.
    */
-  public ArrayList<ArrayList<Integer>> getAllColumnsBlackCellCount() {
+  public ArrayList<ArrayList<Integer>> getBlackCellCountsInAllColumns() {
     int numberOfRows = nonogramGrid.length;
     int numberOfColumns = nonogramGrid[0].length;
-    ArrayList<ArrayList<Integer>> columnCellCount2DList = new ArrayList<>();
+    ArrayList<ArrayList<Integer>> blackCellCountsInAllColumns = new ArrayList<>();
 
     for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
       String[] colorsInOneColumn = new String[numberOfRows];
@@ -47,33 +52,34 @@ public class BlackWhiteNonogramCellCounts {
       for (int rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
         colorsInOneColumn[rowIndex] = nonogramGrid[rowIndex][columnIndex];
       }
-      ArrayList<Integer> lineCellCounts = new ArrayList<>();
-      lineCellCounts = getCountsInOneRowOrCollumn(colorsInOneColumn);
-      columnCellCount2DList.add(lineCellCounts);
+
+      ArrayList<Integer> blackCellCountsInOneColumn = new ArrayList<>();
+      blackCellCountsInOneColumn = getCountsInOneRowOrCollumn(colorsInOneColumn);
+      blackCellCountsInAllColumns.add(blackCellCountsInOneColumn);
     }
-    return columnCellCount2DList;
+    return blackCellCountsInAllColumns;
   }
 
   // Counts contiguous black cells found in a single row/column with gaps between
   // groups of black cells.
   private ArrayList<Integer> getCountsInOneRowOrCollumn(String[] rowOrCollumnToAnalyse) {
     ArrayList<Integer> countsInOneRowOrCollumn = new ArrayList<>();
-    int countBlackCells = 0;
+    int currentCountOfBlackCells = 0;
     boolean containsOnlyWhiteCells = true;
 
     for (String cell : rowOrCollumnToAnalyse) {
-      if (isBlack(cell)) {
-        countBlackCells++;
+      if (isCellBlack(cell)) {
+        currentCountOfBlackCells++;
         containsOnlyWhiteCells = false;
       } else {
-        boolean addedNumberToCounts = handleWhiteCell(countBlackCells, countsInOneRowOrCollumn);
-        if (addedNumberToCounts) {
-          countBlackCells = 0;
+        boolean addedCurrentCountOfBlackCellsToCounts = handleWhiteCell(currentCountOfBlackCells, countsInOneRowOrCollumn);
+        if (addedCurrentCountOfBlackCellsToCounts) {
+          currentCountOfBlackCells = 0;
         }
       }
     }
 
-    handleWhiteCell(countBlackCells, countsInOneRowOrCollumn); // If the last cell in the row/column is black.
+    handleWhiteCell(currentCountOfBlackCells, countsInOneRowOrCollumn); // If the last cell in the row/column is black.
     handleOnlyWhiteCellsInOneLine(containsOnlyWhiteCells, countsInOneRowOrCollumn);
 
     return countsInOneRowOrCollumn;
@@ -93,7 +99,7 @@ public class BlackWhiteNonogramCellCounts {
     }
   }
 
-  private boolean isBlack(String cell) {
+  private boolean isCellBlack(String cell) {
     return cell.equals("black");
   }
 
@@ -116,5 +122,3 @@ public class BlackWhiteNonogramCellCounts {
     this.nonogramGrid = imageGrid;
   }
 }
-
-// TEST THIS

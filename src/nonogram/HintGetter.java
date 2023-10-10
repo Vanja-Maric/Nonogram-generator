@@ -1,7 +1,7 @@
 package nonogram;
 
 /**
- * Provides hints from an image grid for a specified grid cell.
+ * Provides hints from an image grid for a specified grid cell at a specified row and column index.
  */
 public class HintGetter {
   private String[][] imageGrid;
@@ -16,6 +16,10 @@ public class HintGetter {
    * of rows in image Grid - 1.
    * Throws exception if column index have index less than 0 or bitgger than
    * number of columns - 1.
+   * 
+   * @param cellsRowIndex the row index of the cell
+   * @param cellsColumnIndex the column index of the cell
+   * @return the hint at the specified cells row and column index
    */
   public String getHint(int cellsRowIndex, int cellsColumnIndex) {
     return imageGrid[setRowIndex(cellsRowIndex)][setColumnIndex(cellsColumnIndex)];

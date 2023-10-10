@@ -24,68 +24,71 @@ public class NonogramGridCreator {
   }
 
   /**
-   * Returns a two-dimensional array representing a black and white grid.
-   * Each element in the grid is a representation of a black or white cell.
-   *
-   * @return Two-dimensional array representing the black and white grid.
+   * Returns a 2D String array representing the black and white nonogram grid created from the RGB values of all pixels in the image.
+   * Each element in the array represents a cell in the grid and is either black or white.
+   * Black cells represent pixels in the image that are not completely transparent.
+   * White cells represent pixels in the image that are completely transparent.
+   * 
+   * @return a 2D String array representing the black and white nonogram grid
    */
   public String[][] getBlackAndWhiteGrid() {
-    int[][] gridCellsTable = createImageRgbValuesForEveryPixelGrid();
-    String[][] blackAndWhiteGrid = new String[gridCellsTable.length][gridCellsTable[0].length];
-    int imageHeight = gridCellsTable.length;
-    int imageWidth = gridCellsTable[0].length;
+    int[][] rgbValuesOfAllPixelsGrid = getRgbValuesOfAllPixels();
+    String[][] blackAndWhiteNonogramGrid = new String[rgbValuesOfAllPixelsGrid.length][rgbValuesOfAllPixelsGrid[0].length];
+    int imageHeight = rgbValuesOfAllPixelsGrid.length;
+    int imageWidth = rgbValuesOfAllPixelsGrid[0].length;
 
     for (int rowIndex = 0; rowIndex < imageHeight; rowIndex++) {
       for (int columnIndex = 0; columnIndex < imageWidth; columnIndex++) {
-        blackAndWhiteGrid[rowIndex][columnIndex] = determineBlackOrWhiteCell(gridCellsTable[rowIndex][columnIndex]);
+        blackAndWhiteNonogramGrid[rowIndex][columnIndex] = determineBlackOrWhiteCell(rgbValuesOfAllPixelsGrid[rowIndex][columnIndex]);
       }
     }
-    return blackAndWhiteGrid;
+    return blackAndWhiteNonogramGrid;
   }
 
+
   /**
-   * Returns a two-dimensional array representing a red, green, blue and white
-   * grid.
-   * Each element in the grid is a representation of a red, green, blue and white
-   * cell.
-   *
-   * @return Two-dimensional array representing the red, green, blue and white
-   *         grid.
+   * Returns a 2D String array representing a nonogram grid with red, green, blue and white cells.
+   * The red, green and blue cells represent the corresponding color (or color that is closes to red, green and blue) of the pixel in the original image.
+   * The white cells represent transparent color of the pixel in the original image.
+   * 
+   * @return a 2D String array representing a nonogram grid with red, green, blue and white cells.
    */
   public String[][] getRedBlueGreenWhiteNonogramGrid() {
-    int[][] gridCellsTable = createImageRgbValuesForEveryPixelGrid();
-    String[][] redGreenBlueWhiteColorsGrid = new String[gridCellsTable.length][gridCellsTable[0].length];
-    int imageHeight = gridCellsTable.length;
-    int imageWidth = gridCellsTable[0].length;
+    int[][] rgbValuesOfAllPixelsGrid = getRgbValuesOfAllPixels();
+    String[][] redGreenBlueWhiteNonogramGrid = new String[rgbValuesOfAllPixelsGrid.length][rgbValuesOfAllPixelsGrid[0].length];
+    int imageHeight = rgbValuesOfAllPixelsGrid.length;
+    int imageWidth = rgbValuesOfAllPixelsGrid[0].length;
     Color red = new Color(255, 0, 0);
     Color green = new Color(0, 255, 0);
     Color blue = new Color(0, 0, 255);
 
     for (int rowIndex = 0; rowIndex < imageHeight; rowIndex++) {
       for (int columnIndex = 0; columnIndex < imageWidth; columnIndex++) {
-        redGreenBlueWhiteColorsGrid[rowIndex][columnIndex] = determineRedGreenBlueWhiteCell(
-            gridCellsTable[rowIndex][columnIndex], red, green, blue);
+        redGreenBlueWhiteNonogramGrid[rowIndex][columnIndex] = determineRedGreenBlueWhiteCell(
+            rgbValuesOfAllPixelsGrid[rowIndex][columnIndex], red, green, blue);
       }
     }
-    return redGreenBlueWhiteColorsGrid;
+    return redGreenBlueWhiteNonogramGrid;
   }
 
-  private int[][] createImageRgbValuesForEveryPixelGrid() {
-    BufferedImage resizedImg = loadImage();
+   // Returns a 2D array of RGB values for each pixel in the loaded and resized image.
+   // The first dimension represents the row index and the second dimension represents the column index.
+  private int[][] getRgbValuesOfAllPixels() {
+    BufferedImage resizedImg = loadAndResizeImage();
     int imageWidth = resizedImg.getWidth();
     int imageHeight = resizedImg.getHeight();
-    int[][] imageRgbValuesGrid = new int[imageHeight][imageWidth];
+    int[][] RgbValuesOfAllPixelsGrid = new int[imageHeight][imageWidth];
 
     for (int rowIndex = 0; rowIndex < imageHeight; rowIndex++) {
       for (int columnIndex = 0; columnIndex < imageWidth; columnIndex++) {
-        imageRgbValuesGrid[rowIndex][columnIndex] = resizedImg.getRGB(columnIndex, rowIndex);
+        RgbValuesOfAllPixelsGrid[rowIndex][columnIndex] = resizedImg.getRGB(columnIndex, rowIndex);
       }
     }
-    return imageRgbValuesGrid;
+    return RgbValuesOfAllPixelsGrid;
   }
 
   // Loads the image from the specified path and resizes it to the specified size.
-  private BufferedImage loadImage() {
+  private BufferedImage loadAndResizeImage() {
     try {
       BufferedImage image = ImageIO.read(new File(imagePath));
       BufferedImage resizedImage = resizeImage(image, numberOfColumns, numberOfRows);
@@ -107,9 +110,9 @@ public class NonogramGridCreator {
 
   // Changes pixels (cells) rgn value to black if its rgb value is higher than 0
   // (pixel not compeleteley transparent) and to white if the rgb value is 0
-  private String determineBlackOrWhiteCell(int cell) {
+  private String determineBlackOrWhiteCell(int cellsRgbValue) {
     String cellColor = "white";
-    if (cell != 0) {
+    if (cellsRgbValue != 0) {
       cellColor = "black";
     }
     return cellColor;
@@ -149,6 +152,7 @@ public class NonogramGridCreator {
   }
 
   // Validation methods
+
   private void setNumberOfRows(int numberOfRows) {
     if (numberOfRows <= 0) {
       throw new IllegalArgumentException("Number of rows in image grid cannot be less than 1.");
