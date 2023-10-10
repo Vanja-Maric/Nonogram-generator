@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 /**
  * Creates an nonogram grid with marked colored and white cells for nonogram
- * game from loaded image.
+ * game from loaded image and specified number of columns and rows.
  */
 public class NonogramGridCreator {
   private int numberOfRows;
