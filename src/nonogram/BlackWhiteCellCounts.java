@@ -7,10 +7,10 @@ import java.util.ArrayList;
  * row with gaps between groups of black cells for the loaded grid.
  * Counts are stored in 2DArrayLists.
  */
-public class BlackWhiteNonogramCellCounts {
+public class BlackWhiteCellCounts {
   String[][] nonogramGrid;
 
-  public BlackWhiteNonogramCellCounts(String[][] nonogramGrid) {
+  public BlackWhiteCellCounts(String[][] nonogramGrid) {
     setNonogramGrid(nonogramGrid);
   }
 
