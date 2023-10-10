@@ -14,10 +14,12 @@ public class BlackWhiteNonogramCellCounts {
     setNonogramGrid(nonogramGrid);
   }
 
-   /**
-   * Counts and returns the number of consecutive black cells separated by white cells in each row of the nonogram grid.
+  /**
+   * Counts and returns the number of consecutive black cells separated by white
+   * cells in each row of the nonogram grid.
    * 
-   * @return ArrayList of ArrayLists of integers that represents the number of black cells in each row of the nonogram grid.
+   * @return ArrayList of ArrayLists of integers that represents the number of
+   *         black cells in each row of the nonogram grid.
    */
   public ArrayList<ArrayList<Integer>> getBlackCellCountsInAllRows() {
     int numberOfRows = nonogramGrid.length;
@@ -35,11 +37,13 @@ public class BlackWhiteNonogramCellCounts {
     }
     return blackCellCountsInAllRows;
   }
- 
+
   /**
-   * Counts and returns the number of consecutive black cells separated by white cells in each column of the nonogram grid.
+   * Counts and returns the number of consecutive black cells separated by white
+   * cells in each column of the nonogram grid.
    * 
-   * @return ArrayList of ArrayLists of integers that represents the number of black cells in each column of the nonogram grid.
+   * @return ArrayList of ArrayLists of integers that represents the number of
+   *         black cells in each column of the nonogram grid.
    */
   public ArrayList<ArrayList<Integer>> getBlackCellCountsInAllColumns() {
     int numberOfRows = nonogramGrid.length;
@@ -48,7 +52,8 @@ public class BlackWhiteNonogramCellCounts {
 
     for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
       String[] colorsInOneColumn = new String[numberOfRows];
-      // Get same column index from every row and store it in array that represents column line
+      // Get same column index from every row and store it in array that represents
+      // column line
       for (int rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
         colorsInOneColumn[rowIndex] = nonogramGrid[rowIndex][columnIndex];
       }
@@ -72,7 +77,8 @@ public class BlackWhiteNonogramCellCounts {
         currentCountOfBlackCells++;
         containsOnlyWhiteCells = false;
       } else {
-        boolean addedCurrentCountOfBlackCellsToCounts = handleWhiteCell(currentCountOfBlackCells, countsInOneRowOrCollumn);
+        boolean addedCurrentCountOfBlackCellsToCounts = handleWhiteCell(currentCountOfBlackCells,
+            countsInOneRowOrCollumn);
         if (addedCurrentCountOfBlackCellsToCounts) {
           currentCountOfBlackCells = 0;
         }
@@ -93,7 +99,8 @@ public class BlackWhiteNonogramCellCounts {
     return false;
   }
 
-  private void handleOnlyWhiteCellsInOneLine(boolean containsOnlyWhiteCells, ArrayList<Integer> countsInOneRowOrColumn) {
+  private void handleOnlyWhiteCellsInOneLine(boolean containsOnlyWhiteCells,
+      ArrayList<Integer> countsInOneRowOrColumn) {
     if (containsOnlyWhiteCells) {
       countsInOneRowOrColumn.add(0);
     }
@@ -104,21 +111,46 @@ public class BlackWhiteNonogramCellCounts {
   }
 
   // Validation methods
-  private void setNonogramGrid(String[][] imageGrid) {
+
+  // Validate if the imageGrid is not null
+  private void validateImageGridNotNull(String[][] imageGrid) {
     if (imageGrid == null) {
-      throw new IllegalArgumentException("Please add image grid. Image grid cannot be 0.");
+      throw new IllegalArgumentException("Please add an image grid. The image grid cannot be null.");
     }
+  }
 
-    int numberOfRows = imageGrid.length;
+  // Validate if the number of rows is greater than 0
+  private void validateNumberOfRows(int numberOfRows) {
     if (numberOfRows <= 0) {
-      throw new IllegalArgumentException("Number of rows in image grid cannot be less than 1.");
+      throw new IllegalArgumentException("The number of rows in the image grid cannot be less than 1.");
     }
+  }
 
-    int numberOfColumns = imageGrid[0].length;
+  // Validate if the number of columns is greater than 0
+  private void validateNumberOfColumns(int numberOfColumns) {
     if (numberOfColumns <= 0) {
-      throw new IllegalArgumentException("Number of rows in image grid cannot be less than 1.");
+      throw new IllegalArgumentException("The number of columns in the image grid cannot be less than 1.");
     }
+  }
 
+  // Validate if the image grid contains only "black" or "white" cells
+  private void validateImageGridContents(String[][] imageGrid) {
+    for (String[] row : imageGrid) {
+      for (String colorName : row) {
+        if (!colorName.equalsIgnoreCase("white") && !colorName.equalsIgnoreCase("black")) {
+          throw new IllegalArgumentException("The image grid can only contain black and white cells.");
+        }
+      }
+    }
+  }
+
+  // Set the nonogramGrid after successful validation
+  private void setNonogramGrid(String[][] imageGrid) {
+    validateImageGridNotNull(imageGrid);
+    validateNumberOfRows(imageGrid.length);
+    validateNumberOfColumns(imageGrid[0].length);
+    validateImageGridContents(imageGrid);
     this.nonogramGrid = imageGrid;
   }
+
 }
