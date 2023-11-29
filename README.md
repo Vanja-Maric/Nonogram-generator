@@ -13,10 +13,10 @@ För att använda Nonogram Generator, följ dessa enkla steg:
 - Om din utvecklingsmiljö är annorlunda, eller om du använder ett byggverktyg som Maven eller Gradle, behöver du lägga till JAR-filen i ditt beroendehanteringssystem. För Maven och Gradle, lägg till en referens till JAR-filen i din pom.xml eller build.gradle-fil.
 - Efter att ha lagt till JAR-filen, se till att projektet ombyggs för att reflektera de nya beroendena.
 
-***
 ## Tillgängliga Klasser och Metoder
 Här är en översikt över de tillgängliga klasserna och deras metoder:
 
+***
 ### Klass NonogramGridCreator(String imagePath, int numberOfColumns, int numberOfRows)
 ```NonogramGridCreator nonogramGridCreator = new NonogramGridCreator("src/images/sun.png", 15, 15);```
 
