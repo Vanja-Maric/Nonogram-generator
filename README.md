@@ -47,8 +47,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ***
 
-### Klass BlackWhiteCellCounts(String[][] imageGrid) 
-```new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllColumns()```
+### Klass BlackWhiteNonogramCellCounts(String[][] imageGrid) 
+```new BlackWhiteNonogramCellCounts(nonogramGrid).getBlackCellCountsInAllColumns()```
 
 #### METOD 1:
 - ```ArrayList<ArrayList<Integer>> getBlackCellCountsInAllRows()```
@@ -60,20 +60,20 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ##### Exempel:
 ```
-Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
- NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();<br>
- for (int row = 0; row < nonogramGrid.length; row++) {<br>
- Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);<br>
- if (isBlackAndWhite) {<br>
- nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllRows().get(row),<br>
- buttonRowBox);<br>
+Box verticalBoxforButtonRows = Box.createVerticalBox();
+ NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();
+ for (int row = 0; row < nonogramGrid.length; row++) {
+ Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);
+ if (isBlackAndWhite) {
+ nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteNonogramCellCounts(nonogramGrid).getBlackCellCountsInAllRows().get(row),
+ buttonRowBox);
  } else {
- RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);<br>
- nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);<br>
+ RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);
+ nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);
  nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),v
- buttonRowBox);<br>
- }<br>
- verticalBoxforButtonRows.add(buttonRowBox);<br>
+ buttonRowBox);
+ }
+ verticalBoxforButtonRows.add(buttonRowBox);
  }
  ```
 
@@ -88,10 +88,10 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
 ##### Exempel:
 ```
 Box verticalBoxforButtonRows = Box.createVerticalBox();
- NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI(); <br>
- if (isBlackAndWhite) { <br>
- verticalBoxforButtonRows.add( <br>
- nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllColumns())); <br>
+ NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI(); 
+ if (isBlackAndWhite) { 
+ verticalBoxforButtonRows.add( 
+ nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteNonogramCellCounts(nonogramGrid).getBlackCellCountsInAllColumns())); 
  }
  ```
 
