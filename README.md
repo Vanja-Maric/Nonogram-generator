@@ -86,12 +86,14 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
 
 ##### Exempel:
-"Box verticalBoxforButtonRows = Box.createVerticalBox();
+```
+Box verticalBoxforButtonRows = Box.createVerticalBox();
  NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI(); <br>
  if (isBlackAndWhite) { <br>
  verticalBoxforButtonRows.add( <br>
  nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllColumns())); <br>
  }
+ ```
 
 ## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).
