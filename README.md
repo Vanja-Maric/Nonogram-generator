@@ -8,8 +8,12 @@ Mer information om hur man spelar Nonogram-spelet finns här: [Nonogram](https:/
 För att använda Nonogram Generator, följ dessa enkla steg:
 
 1. Ladda ner följande JAR: [jar](https://github.com/Vanja-Maric/Nonogram-generator/blob/main/nonogramGenerator.jar)
-2. Lägg till den till din app
+2. Integrera JAR-filen i din applikation:
+- Om du utvecklar en Java-applikation, lägg till den nedladdade JAR-filen (nonogramGenerator.jar) i ditt projekts biblioteksmapp. Detta kan oftast göras genom att högerklicka på projektets bibliotekssektion i din IDE (som Eclipse eller IntelliJ IDEA) och välja "Lägg till externa JAR-filer".
+- Om din utvecklingsmiljö är annorlunda, eller om du använder ett byggverktyg som Maven eller Gradle, behöver du lägga till JAR-filen i ditt beroendehanteringssystem. För Maven och Gradle, lägg till en referens till JAR-filen i din pom.xml eller build.gradle-fil.
+- Efter att ha lagt till JAR-filen, se till att projektet ombyggs för att reflektera de nya beroendena.
 
+***
 ## Tillgängliga Klasser och Metoder
 Här är en översikt över de tillgängliga klasserna och deras metoder:
 
@@ -38,6 +42,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ##### Exempel:
 ```String[][] blackAndWhiteGrid = gridGetter.getRedBlueGreenWhiteGrid();```
 
+***
+
 ### Klass HintGetter(String[][] imageGrid) 
 ```HintGetter hintGetterBW = new HintGetter(blackAndWhiteGrid);```
 
@@ -49,6 +55,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ##### Exempel:
 ```System.out.println(hintGetterBW.getHint(13, 5));```
+
+***
 
 ### Klass BlackWhiteCellCounts(String[][] imageGrid) 
 ```new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()```
@@ -62,7 +70,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 - Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
 
 ##### Exempel:
-"Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
+```
+Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
  NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI();<br>
  for (int row = 0; row < nonogramGrid.length; row++) {<br>
  Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);<br>
@@ -76,7 +85,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
  buttonRowBox);<br>
  }<br>
  verticalBoxforButtonRows.add(buttonRowBox);<br>
- }"
+ }
+ ```
 
 #### METOD 2:
 - ```public ArrayList<ArrayList<Integer>> getAllColumnsBlackCellCount()```
@@ -93,6 +103,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
  verticalBoxforButtonRows.add( <br>
  nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount())); <br>
  }
+
+***
 
 ### Klass RedGreenBlueCellCounts(String[][] imageGrid) 
 ```RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);```
@@ -141,6 +153,8 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 
 ##### Exempel:
 ```Box horizontalColorsOfColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsColorsOfCounts(RedGreenBLueCellCounts.getCountsColorsColumns());```
+
+***
 
 ## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).
