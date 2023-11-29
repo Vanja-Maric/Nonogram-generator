@@ -17,8 +17,8 @@ För att använda Nonogram Generator, följ dessa enkla steg:
 ## Tillgängliga Klasser och Metoder
 Här är en översikt över de tillgängliga klasserna och deras metoder:
 
-### Klass GridGetter(String imagePath, int numberOfColumns, int numberOfRows)
-```GridGetter gridGetter = new GridGetter("src/images/sun.png", 15, 15);```
+### Klass NonogramGridCreator(String imagePath, int numberOfColumns, int numberOfRows)
+```NonogramGridCreator nonogramGridCreator = new NonogramGridCreator("src/images/sun.png", 15, 15);```
 
 #### METOD 1:
 - ```public String[][] getBlackAndWhiteGrid()```
@@ -26,21 +26,10 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ##### Beskrivning:
 - Denna metod laddar bilden, ändrar storleken på bilden och genererar en svart och vit nonogram-grid.
 - Den returnerar en 2D-array där varje cell är antingen "black" (svart) eller "white" (vit) beroende på färgen i den ursprungliga bilden.
-- Gridens dimensioner motsvarar antalet rader och kolumner som du angav vid skapandet av GridGetter-klassen.
+- Gridens dimensioner motsvarar antalet rader och kolumner som du angav vid skapandet av NonogramGridCreator-klassen.
 
 ##### Exempel:
-```String[][] blackAndWhiteGrid = gridGetter.getBlackAndWhiteGrid();```
-
-#### METOD 2:
-- ```public String[][] getRedBlueGreenWhiteGrid()```
-
-##### Beskrivning:
-- Denna metod laddar bilden, ändrar storleken på bilden och genererar en röd, grön, blå och vit nonogram-grid.
-- Den returnerar en 2D-array där varje cell är antingen "red" (röd), "green" (grön), "blue" (blå)  eller "white" (vit) beroende på färgen i den ursprungliga bilden.
-- Gridens dimensioner motsvarar antalet rader och kolumner som du angav vid skapandet av GridGetter-klassen.
-
-##### Exempel:
-```String[][] blackAndWhiteGrid = gridGetter.getRedBlueGreenWhiteGrid();```
+```String[][] blackAndWhiteGrid = nonogramGridCreator.getBlackAndWhiteGrid();```
 
 ***
 
@@ -59,10 +48,10 @@ Här är en översikt över de tillgängliga klasserna och deras metoder:
 ***
 
 ### Klass BlackWhiteCellCounts(String[][] imageGrid) 
-```new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount()```
+```new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllColumns()```
 
 #### METOD 1:
-- ```ArrayList<ArrayList<Integer>> getAllRowsBlackCellCounts()```
+- ```ArrayList<ArrayList<Integer>> getBlackCellCountsInAllRows()```
 
 ##### Beskrivning:
 - Denna metod skapar räknenycklar (cell counts) för sammanhängande svarta celler som finns i varje rad med mellanrum mellan grupper av svarta celler för laddade gridden.
@@ -76,7 +65,7 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
  for (int row = 0; row < nonogramGrid.length; row++) {<br>
  Box buttonRowBox = getOneNonogramRow(nonogramGrid[row]);<br>
  if (isBlackAndWhite) {<br>
- nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getAllRowsBlackCellCounts().get(row),<br>
+ nonogramCounsKeys.addNonogramOneRowCounts(new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllRows().get(row),<br>
  buttonRowBox);<br>
  } else {
  RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);<br>
@@ -89,7 +78,7 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
  ```
 
 #### METOD 2:
-- ```public ArrayList<ArrayList<Integer>> getAllColumnsBlackCellCount()```
+- ```public ArrayList<ArrayList<Integer>> getBlackCellCountsInAllColumns()```
 
 ##### Beskrivning:
 - Denna metod skapar räknenycklar (cell counts) för sammanhängande svarta celler som finna i varje kolumn med mellanrum mellan grupper av svarta celler för laddade gridden.
@@ -101,9 +90,10 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
  NonogramCountsKeysUI nonogramCounsKeys = new NonogramCountsKeysUI(); <br>
  if (isBlackAndWhite) { <br>
  verticalBoxforButtonRows.add( <br>
- nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getAllColumnsBlackCellCount())); <br>
+ nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllColumns())); <br>
  }
 
+<<<<<<< HEAD
 ***
 
 ### Klass RedGreenBlueCellCounts(String[][] imageGrid) 
@@ -156,6 +146,8 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
 
 ***
 
+=======
+>>>>>>> 86b4aeccc9ec22fbd7e63e3daa822a6805e6119c
 ## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).
 I detta repositorium i mappen tests/testrapport hittar du testning dokumentation:
