@@ -93,61 +93,6 @@ Box verticalBoxforButtonRows = Box.createVerticalBox();<br>
  nonogramCounsKeys.addNonogramAllColumnsCounts(new BlackWhiteCellCounts(nonogramGrid).getBlackCellCountsInAllColumns())); <br>
  }
 
-<<<<<<< HEAD
-***
-
-### Klass RedGreenBlueCellCounts(String[][] imageGrid) 
-```RedGreenBLueCellCounts RedGreenBLueCellCounts = new RedGreenBLueCellCounts(nonogramGrid);```
-
-#### METOD 1:
-- ```public ArrayList<ArrayList<Integer>> getCellCountsRows()```
-
-##### Beskrivning:
-- Denna metod skapar räknenycklar (cell counts) för sammanhängande röda, gröna eller blåa celler som finns i varje rad med mellanrum mellan grupper av sammafärgade celler för laddade gridden.
-- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en eller flera nummer som visar hur många sammanhängande sammafärgade celler som finns i den raden.
-- Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
-
-##### Exempel:
-```nonogramCounsKeys.addNonogramOneRowCounts(RedGreenBLueCellCounts.getCellCountsRows().get(row), buttonRowBox);```
-
-#### METOD 2:
-- ```ArrayList<Integer>> getCellCountsColumns()```
-
-##### Beskrivning:
-- Denna metod skapar räknenycklar (cell counts) för sammanhängande röda, gröna eller blåa celler som finna i varje kolumn med mellanrum mellan grupper av sammafärgade celler för laddade gridden.
-- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en eller flera nummer som visar hur många sammanhängande sammafärgade celler som finns i den kolumnen.
-- Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
-
-##### Exempel:
-```Box horizontalColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsCounts(RedGreenBLueCellCounts.getCellCountsColumns());```
-
-#### METOD 3:
-- ```ArrayList<ArrayList<String>> getCountsColorsRows()```
-
-##### Beskrivning:
-- Denna metod skapar färg av räknenycklar (cell counts) för laddade gridden.
-- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en String som är färgnamn för varje räknenyckel i den raden.
-- Indexen i den yttre ArrayListen i 2D ArrayList motsvarar indexen för raderna i griden.
-
-##### Exempel:
-```nonogramCounsKeys.addNonogramOneRowColoursOfCounts(RedGreenBLueCellCounts.getCountsColorsRows().get(row),buttonRowBox);```
-
-
-#### METOD 4:
-- ```ArrayList<ArrayList<String>> getCountsColorsColumns()```
-
-##### Beskrivning:
-- Denna metod skapar färg (red, green or blue) av räknenycklar (cell counts) för laddade gridden.
-- Den returnerar en 2D ArrayList där varje ArrayList innom den består av en String som är färgnamn för varje räknenyckel i den kolumnen.
-- Indexen av den yttre ArrayListen i 2D ArrayList motsvarar indexen för kolumnerna i griden.
-
-##### Exempel:
-```Box horizontalColorsOfColumnCounts = nonogramCountsKeysUI.addNonogramAllColumnsColorsOfCounts(RedGreenBLueCellCounts.getCountsColorsColumns());```
-
-***
-
-=======
->>>>>>> 86b4aeccc9ec22fbd7e63e3daa822a6805e6119c
 ## Test-App och testning
 Du hittar en test-app för denna modul på denna [länk](https://github.com/Vanja-Maric/Nonogram-test-app/tree/main).
 I detta repositorium i mappen tests/testrapport hittar du testning dokumentation:
